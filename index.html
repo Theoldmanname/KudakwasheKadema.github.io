@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kudakwashe Kadema - Data Scientist | Software Developer | AI/ML Engineer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom Styles for the "Out of this World" feel */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Dark charcoal/blue */
+            color: #e6edf3; /* Light grey text */
+            scroll-behavior: smooth;
+        }
+
+        /* Particle background for Hero section */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #0d1117;
+            background-image: url('');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50% 50%;
+            z-index: 0; /* Ensure particles are behind content */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1; /* Ensure content is above particles */
+        }
+
+        /* Section styling */
+        section {
+            padding: 80px 0;
+            opacity: 0; /* Hidden by default for fade-in effect */
+            transform: translateY(20px); /* Slightly move down for slide-up effect */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 40px;
+            padding-bottom: 10px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #58a6ff; /* Vibrant blue accent */
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: #a371f7; /* Purple accent */
+            border-radius: 2px;
+        }
+
+        /* Project Card Hover Effect */
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Button Styling */
+        .btn-primary {
+            background-color: #58a6ff;
+            color: #0d1117;
+            padding: 12px 28px;
+            border-radius: 9999px; /* Fully rounded */
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #79c0ff;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #a371f7;
+            border: 2px solid #a371f7;
+            padding: 12px 28px;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #a371f7;
+            color: #0d1117;
+            transform: translateY(-2px);
+        }
+
+        /* Skill Bar Styling */
+        .skill-bar {
+            background-color: #21262d;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 10px;
+            margin-top: 5px;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(to right, #58a6ff, #a371f7);
+            border-radius: 5px;
+            animation: fillSkillBar 1.5s ease-out forwards;
+        }
+
+        @keyframes fillSkillBar {
+            from { width: 0%; }
+            to { width: var(--skill-width); }
+        }
+
+        /* Mobile Navigation Specific Styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0d1117; /* Dark background for mobile menu */
+            display: flex;
+            flex-direction: column;
+            justify-center: center;
+            align-items: center;
+            transform: translateX(100%); /* Start off-screen to the right */
+            transition: transform 0.3s ease-in-out;
+            z-index: 60; /* Above regular nav */
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0); /* Slide in */
+        }
+
+        .mobile-menu a {
+            color: #e6edf3;
+            font-size: 1.8rem;
+            padding: 15px 0;
+            width: 80%;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s ease;
+        }
+        .mobile-menu a:hover {
+            color: #58a6ff;
+        }
+        .mobile-menu .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2.5rem;
+            color: #e6edf3;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu .close-btn:hover {
+            color: #a371f7;
+        }
+
+        /* Typewriter Effect */
+        .typewriter-container {
+            min-height: 3rem; /* Ensure enough height for text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem; /* Adjust font size as needed */
+            font-weight: 600;
+            color: #79c0ff; /* Blue for the typewriter text */
+            white-space: nowrap; /* Prevent text from wrapping */
+            overflow: hidden; /* Hide overflow during typing */
+            margin-bottom: 8px;
+        }
+
+        .typewriter-text {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .typewriter-cursor {
+            display: inline-block;
+            vertical-align: middle;
+            width: 3px;
+            height: 1.5em; /* Adjust height to match text */
+            background-color: #a371f7; /* Purple for cursor */
+            animation: blink 0.7s infinite;
+            margin-left: 5px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content .typewriter-container {
+                font-size: 1.2rem; /* Smaller on mobile */
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="bg-gray-900 bg-opacity-80 backdrop-blur-sm fixed w-full z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-white hover:text-blue-400 transition duration-300">Kudakwashe Kadema</a>
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="text-gray-300 hover:text-blue-400 transition duration-300">Home</a>
+                <a href="#about" class="text-gray-300 hover:text-blue-400 transition duration-300">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-blue-400 transition duration-300">Skills</a>
+                <a href="#projects" class="text-gray-300 hover:text-blue-400 transition duration-300">Projects</a>
+                <a href="#contact" class="text-gray-300 hover:text-blue-400 transition duration-300">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button id="close-mobile-menu" class="close-btn"><i class="fas fa-times"></i></button>
+        <a href="#home" class="mobile-nav-link" data-section="home">Home</a>
+        <a href="#about" class="mobile-nav-link" data-section="about">About</a>
+        <a href="#skills" class="mobile-nav-link" data-section="skills">Skills</a>
+        <a href="#projects" class="mobile-nav-link" data-section="projects">Projects</a>
+        <a href="#contact" class="mobile-nav-link" data-section="contact">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+        <div id="particles-js" class="absolute inset-0"></div>
+        <div class="hero-content max-w-4xl mx-auto px-6 py-16 rounded-lg">
+            <img src="https://drive.google.com/thumbnail?id=1SQPeNRsLMr0Ye5PWkYnUuE4hIvkS5-9e" alt="Kudakwashe Kadema" class="rounded-full w-36 h-36 mx-auto mb-8 border-4 border-blue-500 shadow-lg">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-4 animate-fade-in-up">
+                KUDAKWASHE KADEMA
+            </h1>
+            <div class="typewriter-container text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in-up delay-100">
+                I'm a <span style="color: #0d1117;">.</span> <span class="typewriter-text"></span><span class="typewriter-cursor"></span>
+            </div>
+            <p class="text-lg md:text-xl text-gray-300 mb-8 animate-fade-in-up delay-100">
+                Empowering insights and building intelligent solutions at the intersection of Data Science, AI, and Software Development.
+            </p>
+            <div class="flex justify-center space-x-4 animate-fade-in-up delay-200">
+                <a href="https://drive.google.com/file/d/1YcmDRVqvsScOVnytjmn8LNgnnGITJvbp/view?usp=sharing" target="_blank" class="btn-primary flex items-center space-x-2">
+                    <i class="fas fa-file-alt"></i> <span>View Resume</span>
+                </a>
+                <a href="#contact" class="btn-secondary flex items-center space-x-2">
+                    <i class="fas fa-envelope"></i> <span>Get in Touch</span>
+                </a>
+            </div>
+            <div class="mt-8 flex justify-center space-x-6 text-gray-400 animate-fade-in-up delay-300">
+                <a href="https://github.com/Theoldmanname" target="_blank" class="hover:text-white transition duration-300 text-3xl"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/kudakwashe-kadema-6967b5140/" target="_blank" class="hover:text-white transition duration-300 text-3xl"><i class="fab fa-linkedin"></i></a>
+                <!-- Add more social links as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container mx-auto px-6 text-center">
+        <h2 class="section-title text-center mx-auto">About Me</h2>
+        <div class="max-w-3xl mx-auto text-lg text-gray-300 leading-relaxed">
+            <p class="mb-4">
+                I am Kudakwashe Kadema, a passionate and results-driven professional at the intersection of **Data Science, Software Development, and Artificial Intelligence**. My journey in Computer Science is fueled by a deep curiosity to unravel complex problems and transform raw data into actionable intelligence.
+            </p>
+            <p class="mb-4">
+                With a strong foundation in **software engineering principles**, I excel at building robust and scalable applications. My expertise extends into the realm of **AI and Machine Learning**, where I design, develop, and deploy intelligent models that drive predictive insights and automate decision-making processes.
+            </p>
+            <p>
+                I possess a keen analytical mind, adept at **Big Data Analysis** using industry-leading tools like **Power BI, Excel, and Tableau** to visualize trends and communicate compelling data narratives. I am committed to continuous learning and leveraging cutting-edge technologies to create innovative solutions that make a tangible impact.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="container mx-auto px-6 text-center">
+        <h2 class="section-title text-center mx-auto">My Skills</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto text-left">
+            <!-- Programming Languages -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-blue-400 mb-4"><i class="fas fa-code mr-2"></i> Programming Languages</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li>Python <div class="skill-bar"><div class="skill-level" style="--skill-width: 95%;"></div></div></li>
+                    <li>Java <div class="skill-bar"><div class="skill-level" style="--skill-width: 75%;"></div></div></li>
+                    <li>SQL <div class="skill-bar"><div class="skill-level" style="--skill-width: 90%;"></div></div></li>
+                    <li>C++ <div class="skill-bar"><div class="skill-level" style="--skill-level: 60%;"></div></div></li>
+                </ul>
+            </div>
+
+            <!-- Data Science & ML -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-blue-400 mb-4"><i class="fas fa-brain mr-2"></i> Data Science & ML</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li>Pandas, NumPy, Scikit-learn <div class="skill-bar"><div class="skill-level" style="--skill-width: 90%;"></div></div></li>
+                    <li>TensorFlow, Keras, PyTorch <div class="skill-bar"><div class="skill-level" style="--skill-width: 85%;"></div></div></li>
+                    <li>Natural Language Processing (NLP) <div class="skill-bar"><div class="skill-level" style="--skill-width: 70%;"></div></div></li>
+                    <li>Computer Vision (OpenCV) <div class="skill-bar"><div class="skill-level" style="--skill-width: 75%;"></div></div></li>
+                </ul>
+            </div>
+
+            <!-- Big Data & BI -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-blue-400 mb-4"><i class="fas fa-chart-bar mr-2"></i> Big Data & BI</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li>Power BI <div class="skill-bar"><div class="skill-level" style="--skill-width: 90%;"></div></div></li>
+                    <li>Tableau <div class="skill-bar"><div class="skill-level" style="--skill-width: 85%;"></div></div></li>
+                    <li>Excel for Data Analysis <div class="skill-bar"><div class="skill-level" style="--skill-width: 95%;"></div></div></li>
+                    <li>Apache Spark (Basics) <div class="skill-bar"><div class="skill-level" style="--skill-width: 60%;"></div></div></li>
+                </ul>
+            </div>
+
+            <!-- Web Development -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-blue-400 mb-4"><i class="fas fa-globe mr-2"></i> Web Development</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li>Django, Flask <div class="skill-bar"><div class="skill-level" style="--skill-width: 80%;"></div></div></li>
+                    <li>HTML, CSS, JavaScript <div class="skill-bar"><div class="skill-level" style="--skill-width: 90%;"></div></div></li>
+                    <li>RESTful APIs <div class="skill-bar"><div class="skill-level" style="--skill-width: 75%;"></div></div></li>
+                </ul>
+            </div>
+
+            <!-- Databases & Tools -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-blue-400 mb-4"><i class="fas fa-database mr-2"></i> Databases & Tools</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li>PostgreSQL, MySQL <div class="skill-bar"><div class="skill-level" style="--skill-width: 85%;"></div></div></li>
+                    <li>MongoDB <div class="skill-bar"><div class="skill-level" style="--skill-width: 70%;"></div></div></li>
+                    <li>Git, GitHub <div class="skill-bar"><div class="skill-level" style="--skill-width: 90%;"></div></div></li>
+                    <li>Docker (Basics) <div class="skill-bar"><div class="skill-level" style="--skill-width: 65%;"></div></div></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container mx-auto px-6 text-center">
+        <h2 class="section-title text-center mx-auto">My Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Project 1 -->
+            <div class="project-card bg-gray-800 p-6 rounded-lg shadow-md flex flex-col">
+                <h3 class="text-2xl font-semibold text-blue-400 mb-3">Predictive Analytics for Student Performance</h3>
+                <p class="text-gray-400 text-sm mb-4">Data Science | Machine Learning | Education</p>
+                <p class="text-gray-300 mb-4 flex-grow">
+                    Developed a machine learning model to predict student academic performance and identify at-risk students early. Utilized historical data to train models for proactive intervention strategies.
+                </p>
+                <div class="text-gray-400 text-sm mb-4">
+                    <span class="font-semibold">Tech Stack:</span> Python, Pandas, Scikit-learn, TensorFlow, Matplotlib
+                </div>
+                <div class="flex justify-center space-x-4 mt-auto">
+                    <a href="#" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300"><i class="fas fa-external-link-alt mr-1"></i> Live Demo</a>
+                    <a href="https://github.com/yourusername/student-performance-predictor" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300"><i class="fab fa-github mr-1"></i> GitHub Repo</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card bg-gray-800 p-6 rounded-lg shadow-md flex flex-col">
+                <h3 class="text-2xl font-semibold text-blue-400 mb-3">E-commerce Sales Trend Analysis Dashboard</h3>
+                <p class="text-gray-400 text-sm mb-4">Big Data Analysis | Business Intelligence</p>
+                <p class="text-gray-300 mb-4 flex-grow">
+                    Created an interactive dashboard for an e-commerce platform to visualize sales trends, customer behavior, and product performance. Enabled data-driven marketing and inventory decisions.
+                </p>
+                <div class="text-gray-400 text-sm mb-4">
+                    <span class="font-semibold">Tech Stack:</span> Power BI, Excel, SQL, Data Warehousing Concepts
+                </div>
+                <div class="flex justify-center space-x-4 mt-auto">
+                    <a href="#" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300"><i class="fas fa-external-link-alt mr-1"></i> Live Demo</a>
+                    <a href="https://github.com/yourusername/ecommerce-dashboard" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300"><i class="fab fa-github mr-1"></i> GitHub Repo</a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card bg-gray-800 p-6 rounded-lg shadow-md flex flex-col">
+                <h3 class="text-2xl font-semibold text-blue-400 mb-3">Automated University Course Scheduler</h3>
+                <p class="text-gray-400 text-sm mb-4">Software Development | Algorithm Optimization</p>
+                <p class="text-gray-300 mb-4 flex-grow">
+                    Designed and implemented a web-based system to automate university course scheduling, optimizing for room availability, faculty load, and student preferences using constraint satisfaction algorithms.
+                </p>
+                <div class="text-gray-400 text-sm mb-4">
+                    <span class="font-semibold">Tech Stack:</span> Python, Django, PostgreSQL, HTML, CSS, JavaScript
+                </div>
+                <div class="flex justify-center space-x-4 mt-auto">
+                    <a href="#" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300"><i class="fas fa-external-link-alt mr-1"></i> Live Demo</a>
+                    <a href="https://github.com/yourusername/course-scheduler" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300"><i class="fab fa-github mr-1"></i> GitHub Repo</a>
+                </div>
+            </div>
+
+            <!-- Project 4 (Optional, if you want more) -->
+            <div class="project-card bg-gray-800 p-6 rounded-lg shadow-md flex flex-col">
+                <h3 class="text-2xl font-semibold text-blue-400 mb-3">Campus Security Image Recognition System</h3>
+                <p class="text-gray-400 text-sm mb-4">AI | Computer Vision | Deep Learning</p>
+                <p class="text-gray-300 mb-4 flex-grow">
+                    Developed a real-time image recognition system for campus security, capable of detecting specific objects or anomalies in CCTV feeds using deep learning models.
+                </p>
+                <div class="text-gray-400 text-sm mb-4">
+                    <span class="font-semibold">Tech Stack:</span> Python, TensorFlow, Keras, OpenCV, Flask
+                </div>
+                <div class="flex justify-center space-x-4 mt-auto">
+                    <a href="#" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300"><i class="fas fa-external-link-alt mr-1"></i> Live Demo</a>
+                    <a href="https://github.com/yourusername/campus-security-vision" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300"><i class="fab fa-github mr-1"></i> GitHub Repo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container mx-auto px-6 text-center">
+        <h2 class="section-title text-center mx-auto">Get in Touch</h2>
+        <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+            Have a project in mind or just want to connect? Feel free to reach out! I'm always open to discussing new opportunities and collaborations.
+        </p>
+        <div class="max-w-md mx-auto bg-gray-800 p-8 rounded-lg shadow-md">
+            <form action="https://formspree.io/f/yourformid" method="POST" class="space-y-6">
+                <!-- Replace 'yourformid' with your actual Formspree form ID -->
+                <div>
+                    <label for="name" class="block text-left text-gray-300 text-sm font-bold mb-2">Name</label>
+                    <input type="text" id="name" name="name" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600 text-white" placeholder="Your Name" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-left text-gray-300 text-sm font-bold mb-2">Email</label>
+                    <input type="email" id="email" name="_replyto" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600 text-white" placeholder="your.email@example.com" required>
+                </div>
+                <div>
+                    <label for="message" class="block text-left text-gray-300 text-sm font-bold mb-2">Message</label>
+                    <textarea id="message" name="message" rows="6" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600 text-white resize-y" placeholder="Your message..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-full">Send Message</button>
+            </form>
+            <p class="text-gray-400 text-sm mt-6">
+                Alternatively, you can reach me directly at: <a href="mailto:kudakademae@gmail.com" class="text-blue-400 hover:underline">kudakademae@gmail.com</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8 text-center text-gray-400 text-sm">
+        <div class="container mx-auto px-6">
+            &copy; 2025 Kudakwashe Kadema. All rights reserved.
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="https://github.com/yourusername" target="_blank" class="hover:text-white transition duration-300"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" class="hover:text-white transition duration-300"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#a371f7" /* Particle color (purple accent) */
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#58a6ff", /* Line color (blue accent) */
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // Intersection Observer for section fade-in animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2 // Trigger when 20% of the section is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+            });
+
+            closeMobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active'); // Close menu on link click
+                });
+            });
+
+            // Typewriter effect
+            const texts = [
+                "Data Scientist",
+                "Software Developer",
+                "AI/ML Engineer",
+                "Big Data Analyst"
+            ];
+
+            let speed = 100; // Typing speed in milliseconds
+            let eraseSpeed = 50; // Erasing speed in milliseconds
+            let newTextDelay = 1000; // Delay before typing new text
+
+            const textElement = document.querySelector('.typewriter-text');
+            let textIndex = 0;
+            let characterIndex = 0;
+
+            function typeWriter() {
+                if (characterIndex < texts[textIndex].length) {
+                    textElement.innerHTML += texts[textIndex].charAt(characterIndex);
+                    characterIndex++;
+                    setTimeout(typeWriter, speed);
+                } else {
+                    setTimeout(eraseText, newTextDelay);
+                }
+            }
+
+            function eraseText() {
+                if (textElement.innerHTML.length > 0) {
+                    textElement.innerHTML = textElement.innerHTML.slice(0, -1);
+                    setTimeout(eraseText, eraseSpeed);
+                } else {
+                    textIndex = (textIndex + 1) % texts.length;
+                    characterIndex = 0;
+                    setTimeout(typeWriter, 500); // Delay before starting new text
+                }
+            }
+
+            // Start the typewriter effect when the page loads
+            typeWriter();
+        });
+    </script>
+</body>
+</html>
